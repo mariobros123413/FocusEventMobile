@@ -4,7 +4,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../fotos/fotos_widget.dart';
 import '../user_session.dart';
-import 'asistencias_model.dart'; // Asegúrate de importar tu modelo de asistencias
+import 'asistencias_model.dart';
 
 class AsistenciasWidget extends StatefulWidget {
   const AsistenciasWidget({Key? key}) : super(key: key);
@@ -24,15 +24,19 @@ class _AsistenciasWidgetState extends State<AsistenciasWidget> {
 
     _model = Provider.of<AsistenciasModel>(context, listen: false);
     _model.idusuario = userSession.id;
-    _model
-        .fetchApiSolicitud(); // Puedes cargar las asistencias al inicializar la pantalla
+    _model.fetchApiSolicitud();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Asistencias'),
+        title: Text(
+          'Registro de Asistencias',
+          style: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.pink, // Color femenino
+        elevation: 0, // Sin sombra en la barra de navegación
       ),
       body: Column(
         children: [
@@ -46,12 +50,13 @@ class _AsistenciasWidgetState extends State<AsistenciasWidget> {
                     },
                   )
                 : Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.pink),
+                    ),
                   ),
           ),
           ElevatedButton(
             onPressed: () {
-              // Abre el lector de QR
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -59,7 +64,22 @@ class _AsistenciasWidgetState extends State<AsistenciasWidget> {
                 ),
               );
             },
-            child: Text('Escanear QR'),
+            child: Text(
+              'Escanear Código QR',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.pink, // Color femenino
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+            ),
           ),
         ],
       ),
@@ -69,9 +89,7 @@ class _AsistenciasWidgetState extends State<AsistenciasWidget> {
   Widget _buildAsistenciaCard(AsistenciasModel asistencia) {
     return GestureDetector(
       onTap: () {
-        // Obtener el ID del evento o proporcionar un valor predeterminado si es nulo
         int eventoId = asistencia.idgaleria ?? 4;
-        // Navegar a FotosWidget con el ID del evento como parámetro
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -82,8 +100,14 @@ class _AsistenciasWidgetState extends State<AsistenciasWidget> {
       child: Card(
         elevation: 5,
         margin: EdgeInsets.all(8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: ListTile(
-          title: Text(asistencia.nombre ?? ''),
+          title: Text(
+            asistencia.nombre ?? '',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           subtitle: Text(
             'Fecha: ${asistencia.fecha ?? ''} - Hora Llegada: ${asistencia.horallegada ?? ''}',
           ),
@@ -98,13 +122,11 @@ class QRScannerScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _QRScannerScreenState();
 }
 
-// ...
-
 class _QRScannerScreenState extends State<QRScannerScreen> {
   late QRViewController controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   late AsistenciasModel _model;
-  String codigoEscaneado = ''; // Variable para almacenar el código escaneado
+  String codigoEscaneado = '';
 
   @override
   void initState() {
@@ -134,12 +156,26 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      // Llamar a la función para registrar la asistencia
                       _model.registrarAsistencia(codigoEscaneado);
-                      // Puedes cerrar la pantalla de escaneo cuando obtienes el resultado deseado
                       Navigator.pop(context);
                     },
-                    child: Text("Aceptar"),
+                    child: Text(
+                      'Aceptar',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.pink, // Color femenino
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    ),
                   ),
                 ],
               ),
@@ -153,16 +189,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      // Almacenar el código escaneado
       setState(() {
         codigoEscaneado = scanData.code!;
       });
-      // Puedes manejar el resultado del escaneo aquí si es necesario
       print("Código escaneado: $codigoEscaneado");
 
-      // Llamar a la función para registrar la asistencia
       _model.registrarAsistencia(codigoEscaneado);
-      // Puedes cerrar la pantalla de escaneo cuando obtienes el resultado deseado
       Navigator.pop(context);
     });
   }

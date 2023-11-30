@@ -6,6 +6,7 @@ import 'package:focusevent/peticiones/peticiones_model.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'fotos/fotos_model.dart';
 import 'home/home_model.dart';
 import 'login/login_widget.dart';
 import 'menu_profile/mprofile_model.dart';

@@ -1,19 +1,14 @@
 import 'dart:convert';
 
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../fotos/fotos_widget.dart';
 import '../user_session.dart';
 import 'peticiones_model.dart';
-export 'peticiones_model.dart';
 import '../user_session.dart';
 import '../httpInstance.dart';
 import 'package:dio/dio.dart';
@@ -112,18 +107,14 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
+          leading: IconButton(
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Color(0xFF14181B),
+              color: Colors.purple, // Cambia a tu color femenino preferido
               size: 30,
             ),
             onPressed: () {
@@ -133,11 +124,12 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
             },
           ),
           title: Text(
-            'Tus Eventos',
-            style: FlutterFlowTheme.of(context).headlineLarge.override(
-                  fontFamily: 'Outfit',
-                  fontWeight: FontWeight.normal,
-                ),
+            'Eventos Registrados',
+            style: TextStyle(
+              fontFamily: 'Outfit',
+              fontWeight: FontWeight.normal,
+              color: Colors.deepPurple,
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -153,12 +145,7 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Activos Fijos registrados hasta la fecha',
-                        style: FlutterFlowTheme.of(context).labelMedium,
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 Column(
@@ -180,8 +167,7 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Color(0xFFF4F4F4),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Padding(
@@ -201,16 +187,11 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                               children: [
                                                 Text(
                                                   cardData.nombre ?? '',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
+                                                  style: TextStyle(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -218,17 +199,12 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                                   child: AutoSizeText(
                                                     cardData.descripcion ?? '',
                                                     textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                    style: TextStyle(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Color(0xFF606A85),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                                   ),
                                                 ),
                                                 Padding(
@@ -237,17 +213,12 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                                   child: AutoSizeText(
                                                     cardData.fecha ?? '',
                                                     textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                    style: TextStyle(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Color(0xFF606A85),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                                   ),
                                                 ),
                                                 Padding(
@@ -256,17 +227,12 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                                   child: AutoSizeText(
                                                     cardData.codigo ?? '',
                                                     textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                    style: TextStyle(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Color(0xFF606A85),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                                   ),
                                                 ),
                                                 Row(
@@ -275,12 +241,33 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                                       onPressed: () {
                                                         // Lógica para generar el QR
                                                         _generarQR(
-                                                            cardData.codigo ??
-                                                                '',
-                                                            cardData.nombre ??
-                                                                '');
+                                                          cardData.codigo ?? '',
+                                                          cardData.nombre ?? '',
+                                                        );
                                                       },
-                                                      child: Text('Generar QR'),
+                                                      child: Text(
+                                                        'Generar QR',
+                                                        style: TextStyle(
+                                                          fontFamily: 'Roboto',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors
+                                                              .purple, // Cambia a tu color femenino preferido
+                                                        ),
+                                                      ),
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary: Colors
+                                                            .white, // Color de fondo del botón
+                                                        elevation:
+                                                            5, // Elevación del botón
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  15), // Bordes redondeados
+                                                        ),
+                                                      ),
                                                     ),
                                                     SizedBox(width: 8),
                                                     ElevatedButton(
@@ -289,16 +276,40 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                                                         Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                FotosWidget(
-                                                                    eventoId:
-                                                                        cardData.idgaleria ??
-                                                                            0),
+                                                            builder:
+                                                                (context) =>
+                                                                    FotosWidget(
+                                                              eventoId: cardData
+                                                                      .idgaleria ??
+                                                                  0,
+                                                            ),
                                                           ),
                                                         );
                                                       },
-                                                      child: Text('Ver Fotos'),
-                                                    ),
+                                                      child: Text(
+                                                        'Ver Fotos',
+                                                        style: TextStyle(
+                                                          fontFamily: 'Roboto',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors
+                                                              .white, // Cambia a tu color femenino preferido
+                                                        ),
+                                                      ),
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary: Colors
+                                                            .purple, // Color de fondo del botón
+                                                        elevation:
+                                                            5, // Elevación del botón
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  15), // Bordes redondeados
+                                                        ),
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
                                               ],
@@ -314,12 +325,16 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
                           ),
                           Divider(
                             thickness: 1,
-                            color: FlutterFlowTheme.of(context).accent4,
+                            color: Color.fromARGB(255, 118, 20, 154),
                           ),
                           if (_model.procesado == null)
                             Text(
                               'Al parecer no has creado ningún evento',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 16,
+                                color: Color(0xFF606A85),
+                              ),
                             ),
                         ],
                       ),
@@ -335,6 +350,7 @@ class _PeticionesWidgetState extends State<PeticionesWidget> {
             _showCrearEventoModal(context);
           },
           child: Icon(Icons.add),
+          backgroundColor: Color(0xFFED5470),
         ),
       ),
     );

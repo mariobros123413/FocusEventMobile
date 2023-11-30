@@ -1,15 +1,10 @@
-import 'package:image_picker/image_picker.dart';
-
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+
 import 'fotos_model.dart';
-export 'fotos_model.dart';
 
 class FotosWidget extends StatefulWidget {
   const FotosWidget({Key? key, required this.eventoId}) : super(key: key);
@@ -22,6 +17,7 @@ class FotosWidget extends StatefulWidget {
 class _FotosWidgetState extends State<FotosWidget> {
   late FotosModel _model;
   late File _selectedImage;
+
   @override
   void initState() {
     super.initState();
@@ -33,13 +29,19 @@ class _FotosWidgetState extends State<FotosWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fotos del Evento'),
+        title: Text(
+          'Fotos del Evento',
+          style: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.pink, // Color femenino
+        elevation: 0, // Sin sombra en la barra de navegación
       ),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _openCamera(),
         tooltip: 'Buscar fotos similares',
         child: Icon(Icons.camera_alt),
+        backgroundColor: Colors.pink, // Color femenino
       ),
     );
   }
@@ -49,13 +51,18 @@ class _FotosWidgetState extends State<FotosWidget> {
       builder: (context, model, child) {
         if (model.procesado == null) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.pink),
+            ),
           );
         }
 
         if (model.procesado!.isEmpty) {
           return Center(
-            child: Text('No hay fotos disponibles'),
+            child: Text(
+              'No hay fotos disponibles',
+              style: TextStyle(fontFamily: 'Roboto', fontSize: 16),
+            ),
           );
         }
 
@@ -75,6 +82,9 @@ class _FotosWidgetState extends State<FotosWidget> {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Column(
           children: [
             if (foto.usuariomostrar == true)
@@ -89,7 +99,12 @@ class _FotosWidgetState extends State<FotosWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Fotógrafo: ${foto.correo ?? ''}',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink, // Color femenino
+                  ),
                 ),
               ),
           ],
@@ -107,10 +122,8 @@ class _FotosWidgetState extends State<FotosWidget> {
         _selectedImage = File(image.path);
       });
 
-      // Lógica para enviar la imagen al backend y realizar la búsqueda de fotos similares
       await _model.buscarFotosSimilares(_selectedImage);
 
-      // Actualizar la interfaz de usuario con los resultados de la búsqueda
       setState(() {
         // Puedes hacer algo con los resultados si es necesario
       });
@@ -125,6 +138,6 @@ class _FotosWidgetState extends State<FotosWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _initModel(); // Llama a _initModel en cada cambio de dependencias
+    _initModel();
   }
 }

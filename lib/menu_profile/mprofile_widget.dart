@@ -57,9 +57,9 @@ class _ProfileWidgetWidgetState extends State<ProfileWidgetWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color.fromARGB(255, 142, 72, 110),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -68,7 +68,7 @@ class _ProfileWidgetWidgetState extends State<ProfileWidgetWidget> {
             buttonSize: 60,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Color(0xFF14181B),
+              color: Colors.purple, // Cambia a tu color femenino preferido
               size: 30,
             ),
             onPressed: () {
@@ -79,7 +79,7 @@ class _ProfileWidgetWidgetState extends State<ProfileWidgetWidget> {
             'Menú',
             style: FlutterFlowTheme.of(context).bodyLarge.override(
                   fontFamily: 'Plus Jakarta Sans',
-                  color: Color(0xFF14181B),
+                  color: Colors.purple, // Cambia a tu color femenino preferido
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
                 ),
@@ -100,7 +100,7 @@ class _ProfileWidgetWidgetState extends State<ProfileWidgetWidget> {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 142, 72, 110),
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 3,
@@ -194,7 +194,7 @@ class _ProfileWidgetWidgetState extends State<ProfileWidgetWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 16, 0, 0),
                   child: Text(
-                    'Account',
+                    'Acciones',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
                           fontFamily: 'Plus Jakarta Sans',
                           color: Color(0xFF57636C),

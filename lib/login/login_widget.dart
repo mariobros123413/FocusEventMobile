@@ -147,7 +147,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: Image.network(
-              'https://t3.ftcdn.net/jpg/04/98/66/02/360_F_498660266_nGfbwh1lr2vReDHPPV1ZCAYlTxnX6lXi.jpg',
+              'https://4kwallpapers.com/images/walls/thumbs_3t/6671.jpg',
             ).image,
           ),
           shape: BoxShape.rectangle,
@@ -167,7 +167,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.network(
-                            'https://scontent.fvvi1-1.fna.fbcdn.net/v/t1.15752-9/398308058_806063907871492_736907878499778318_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=5fI_Ae40GF8AX-wyhNc&_nc_ht=scontent.fvvi1-1.fna&oh=03_AdSM4Q890TxWdXK-FXyZOep9Zzq_vUMU1lkzAoGw1pIttQ&oe=658AA1ED',
+                            'https://scontent.fvvi1-2.fna.fbcdn.net/v/t1.15752-9/404513501_846384157491518_6539631298893060919_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=kH5d0p30KEQAX_u93Gp&_nc_ht=scontent.fvvi1-2.fna&oh=03_AdQxjMgXmV4bJoF6ddEb_KFRwzR8_CXNpdmZh4mVi1IJxg&oe=658CED1E',
                             width: MediaQuery.sizeOf(context).width * 0.823,
                             height: MediaQuery.sizeOf(context).height * 0.2,
                             fit: BoxFit.fitWidth,
@@ -415,7 +415,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                             iconPadding:
                                 EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                            color: Color(0xFF39E6EF),
+                            color: Color.fromARGB(255, 239, 57, 233),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
